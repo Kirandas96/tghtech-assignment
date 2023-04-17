@@ -13,7 +13,6 @@ const dispatch=useDispatch()
     setTag(event.target.value);
     dispatch(getSearch(event.target.value))
   };
-  console.log(tag)
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
       <InputLabel id="demo-select-small">Thought</InputLabel>
@@ -26,7 +25,7 @@ const dispatch=useDispatch()
       >
         {arr.map((el)=>{
             return(
-                <MenuItem key={el.id} value={el.name}>{el.name}</MenuItem>
+                <MenuItem key={el._id} value={el.name}>{el.name}</MenuItem>
             )
         })}
        

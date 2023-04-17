@@ -26,6 +26,12 @@
   height: 200px;
   background-color: red;
   color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-bottom: 20px;
+  text-align: center;
+}
+.selector{
+  width: 140px;
+  height: 60px;
+  background-color: white;
 }

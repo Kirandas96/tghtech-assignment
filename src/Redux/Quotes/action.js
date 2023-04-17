@@ -35,6 +35,7 @@ export const getSearch=(search)=>(dispatch)=>{
 export const addBookmark=(item)=>(dispatch)=>{
 console.log(item)
     dispatch({type:types.GET_BOOKMARK_REQUEST})
+    localStorage.clear();
     localStorage.setItem("bookmarks",JSON.stringify(item))
    dispatch({type:types.GET_BOOKMARK_SUCCESS})
    dispatch({type:types.GET_BOOKMARK_FAILURE})

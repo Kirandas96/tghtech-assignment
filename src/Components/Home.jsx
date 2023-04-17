@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookmark, getQuotes, getTags } from "../Redux/Quotes/action";
 import Dropdown from "./Dropdown";
+import { Loading } from "./Loading";
 import { Navbar } from "./Navbar";
 
 export const Home = () => {
@@ -15,38 +16,37 @@ export const Home = () => {
   }, []);
   const quote = useSelector((state) => state.quoteReducer.quote);
   const tags = useSelector((state) => state.quoteReducer.tags);
- console.log(tags);
-
-  const tagsFetching = () => {
-    axios.get("http://api.quotable.io/tags").then((data) => {
-      setTags(data?.data);
-    });
-  };
-
+const newArr=[]
+ const saved=localStorage.getItem("bookmarks")!==null?JSON.parse(localStorage.getItem("bookmarks")):[]
+const loading=useSelector((state) => state.quoteReducer.isLoading);
   const handleNext=()=>{
     dispatch(getQuotes())
   }
   const handleSave=(item)=>{
-    dispatch(addBookmark(item))
+    dispatch(addBookmark([...saved,item]))
   }
   return (
     <div className="home">
-      <Navbar />
+      <Navbar weight1="700"/>
       <div className="container">
-       {
-        quote.map((el)=>{
-          return(
-            <div className="quote">
-            <p>{el.content}</p>
-            <h3>-{el.author}</h3>
-            <div>
-              <button onClick={()=>handleSave(el)}>Bookmark</button>
+        {loading?<Loading/>:
+         <div>
+         {
+          quote.map((el)=>{
+            return(
+              <div className="quote" key={el._id}>
+              <p>{el.content}</p>
+              <h3>-{el.author}</h3>
+              <div>
+                <button onClick={()=>handleSave(el)}>Bookmark</button>
+              </div>
             </div>
-          </div>
-          )
-        })
-       }
-        <div>
+            )
+          })
+         }
+         </div>}
+      
+        <div className="selector">
           <Dropdown arr={tags} />
         </div>
         <div>
