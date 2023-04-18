@@ -24,7 +24,7 @@ export const getTags=()=>(dispatch)=>{
 export const getSearch=(search)=>(dispatch)=>{
 
     dispatch({type:types.GET_SEARCH_REQUEST})
-    return axios.get(`https://api.quotable.io/quotes?tags=${search}`)
+    return axios.get(`https://api.quotable.io/quotes/random?tags=${search}&limit=1`)
    .then((res)=>{dispatch({type:types.GET_SEARCH_SUCCESS,payload:res.data.results})
    console.log(res,"a")
 })
