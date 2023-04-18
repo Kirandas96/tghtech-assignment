@@ -22,6 +22,7 @@ const dispatch=useDispatch()
         value={tag}
         label="Age"
         onChange={handleChange}
+        className="select"
       >
         {arr.map((el)=>{
             return(

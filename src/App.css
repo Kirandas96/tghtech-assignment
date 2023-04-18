@@ -55,6 +55,9 @@ button{
   height: 30px;
   border-radius: 15px;
 }
+.select{
+  background-color: white;
+}
 @media only screen and (max-width : 480px) {
 .quote{
   background-color: aquamarine;
