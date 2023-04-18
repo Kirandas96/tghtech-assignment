@@ -14,7 +14,7 @@ const dispatch=useDispatch()
     dispatch(getSearch(event.target.value))
   };
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <FormControl sx={{ m: 1, minWidth: 220}} size="medium">
       <InputLabel id="demo-select-small">Thought</InputLabel>
       <Select
         labelId="demo-select-small"

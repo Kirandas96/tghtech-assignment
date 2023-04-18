@@ -16,37 +16,44 @@ export const Home = () => {
   }, []);
   const quote = useSelector((state) => state.quoteReducer.quote);
   const tags = useSelector((state) => state.quoteReducer.tags);
-const newArr=[]
- const saved=localStorage.getItem("bookmarks")!==null?JSON.parse(localStorage.getItem("bookmarks")):[]
-const loading=useSelector((state) => state.quoteReducer.isLoading);
-  const handleNext=()=>{
-    dispatch(getQuotes())
-  }
-  const handleSave=(item)=>{
-    dispatch(addBookmark([...saved,item]))
-  }
+  const newArr = [];
+  const saved =
+    localStorage.getItem("bookmarks") !== null
+      ? JSON.parse(localStorage.getItem("bookmarks"))
+      : [];
+  const loading = useSelector((state) => state.quoteReducer.isLoading);
+  const handleNext = () => {
+    dispatch(getQuotes());
+  };
+  const handleSave = (item) => {
+    dispatch(addBookmark([...saved, item]));
+  };
   return (
     <div className="home">
-      <Navbar weight1="700"/>
+      <Navbar weight1="700" />
       <div className="container">
-        {loading?<Loading/>:
-         <div>
-       
-              <div className="quote" key={quote[0]?._id}>
+        {loading ? (
+          <div className="loading">
+            <Loading />
+            <h3>Loading...</h3>
+          </div>
+        ) : (
+          <div>
+            <div className="quote" key={quote[0]?._id}>
               <p>{quote[0]?.content}</p>
               <h3>-{quote[0]?.author}</h3>
               <div>
-                <button onClick={()=>handleSave(quote[0])}>Bookmark</button>
+                <button onClick={() => handleSave(quote[0])}>Bookmark</button>
               </div>
             </div>
-          
-         </div>}
-      
+          </div>
+        )}
+
         <div className="selector">
           <Dropdown arr={tags} />
         </div>
         <div>
-          <button onClick={()=>handleNext()}>Next</button>
+          <button onClick={() => handleNext()}>Next</button>
         </div>
       </div>
     </div>
