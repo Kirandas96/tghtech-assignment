@@ -37,9 +37,10 @@ console.log(item)
     dispatch({type:types.GET_BOOKMARK_REQUEST})
     localStorage.clear();
     localStorage.setItem("bookmarks",JSON.stringify(item))
-   dispatch({type:types.GET_BOOKMARK_SUCCESS})
+   dispatch({type:types.GET_BOOKMARK_SUCCESS,payload:item})
    dispatch({type:types.GET_BOOKMARK_FAILURE})
 }
+
 
 
 

@@ -1,12 +1,12 @@
 
 import * as types from './actionType'
-const saved=localStorage.getItem("bookmarks")!==null?JSON.parse(localStorage.getItem("bookmarks")):[]
+
 const initialState = {
   quote: [],
   isLoading: false,
   isError: false,
   tags:[],
-  bookmarks:saved
+  bookmarks:[],
 };
 
 export const quoteReducer = (state = initialState,action) => {
@@ -96,7 +96,7 @@ export const quoteReducer = (state = initialState,action) => {
 
     case types.GET_BOOKMARK_SUCCESS:{
       return{
-        ...state,
+        ...state,bookmarks:payload,
         isLoading:false,
         isError:false
       }
@@ -109,6 +109,7 @@ export const quoteReducer = (state = initialState,action) => {
       }
 
     }
+    
     
     default:
      return state;
