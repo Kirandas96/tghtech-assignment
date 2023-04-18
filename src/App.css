@@ -35,10 +35,12 @@
   padding-top: 30px;
 }
 .selector{
-  width: 240px;
+  width: 600px;
   height: 70px;
-  background-color: white;
   border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  color: white;
 }
 .loading{
   display: flex;
