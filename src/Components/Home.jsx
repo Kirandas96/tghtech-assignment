@@ -31,19 +31,15 @@ const loading=useSelector((state) => state.quoteReducer.isLoading);
       <div className="container">
         {loading?<Loading/>:
          <div>
-         {
-          quote.map((el)=>{
-            return(
-              <div className="quote" key={el._id}>
-              <p>{el.content}</p>
-              <h3>-{el.author}</h3>
+       
+              <div className="quote" key={quote[0]?._id}>
+              <p>{quote[0]?.content}</p>
+              <h3>-{quote[0]?.author}</h3>
               <div>
-                <button onClick={()=>handleSave(el)}>Bookmark</button>
+                <button onClick={()=>handleSave(quote[0])}>Bookmark</button>
               </div>
             </div>
-            )
-          })
-         }
+          
          </div>}
       
         <div className="selector">
