@@ -12,10 +12,7 @@ const dispatch=useDispatch()
   const bookmarks=localStorage.getItem("bookmarks")!==null?JSON.parse(localStorage.getItem("bookmarks")):[]
   var filter=[]
   console.log(saved);
-
-useEffect(()=>{
-  dispatch(getQuotes())
-},[c])
+  
   const handleRemove=(el)=>{
     filter=bookmarks.filter(item=>item._id!==el._id)
     localStorage.clear();
