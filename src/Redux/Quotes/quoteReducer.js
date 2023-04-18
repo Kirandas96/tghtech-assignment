@@ -6,7 +6,7 @@ const initialState = {
   isLoading: false,
   isError: false,
   tags:[],
-  bookmarks:[],
+  bookmarks:localStorage.getItem("bookmarks")!==null?JSON.parse(localStorage.getItem("bookmarks")):[],
 };
 
 export const quoteReducer = (state = initialState,action) => {
